@@ -11,6 +11,7 @@ import {
 } from "../generated";
 import { BanditClub } from "../constants";
 import { BigNumber } from "ethers";
+import { useContract, useProvider } from "wagmi";
 
 const StyledUserDashboard = styled.div`
   .header {
@@ -32,11 +33,14 @@ const StyledUserDashboard = styled.div`
 `;
 
 export default function UserDashboard() {
-  const contracts = ["0x123", "0x456", "0x789"];
+  /*const contracts = ["0x123", "0x456", "0x789"];*/
+  const provider = useProvider();
 
   const contract = useBanditClub({
     address: BanditClub,
+    signerOrProvider: provider,
   });
+  console.log("-> contract", contract);
 
   const { data: totalRegisteredContracts } =
     useBanditClubRegisteredContractsCount({
@@ -45,7 +49,7 @@ export default function UserDashboard() {
     });
   console.log("-> data", totalRegisteredContracts?.toNumber());
 
-  //const [contracts, setContracts] = useState<string[]>([]);
+  const [contracts, setContracts] = useState<string[]>([]);
   console.log("-> contracts", contracts);
 
   useEffect(() => {

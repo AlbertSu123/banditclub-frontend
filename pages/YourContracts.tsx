@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Grid } from "@nextui-org/react";
 import { ContractCard } from "../components/ContractCard";
 import styled from "styled-components";
 import RegisterContract from "../components/RegisterContract";
 import { YourContractCard } from "../components/YourContractCard";
+import {
+  useBanditClub,
+  useBanditClubRegisteredContractsCount,
+  useBanditClubUserAdddressToContracts,
+} from "../generated";
+import { BanditClub } from "../constants";
+import { useAccount } from "wagmi";
+import { BigNumber } from "ethers";
 
 const StyledUserContracts = styled.div`
   .header {
@@ -33,7 +41,11 @@ const StyledUserContracts = styled.div`
 `;
 
 function YourContracts() {
+  const { address } = useAccount();
   const contracts = ["0x123", "0x456", "0x789"];
+  const contract = useBanditClub({
+    address: BanditClub,
+  });
 
   return (
     <StyledUserContracts>
