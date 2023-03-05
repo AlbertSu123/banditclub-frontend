@@ -31,7 +31,18 @@ function Header() {
       <div className={"header"}>
         <p>Bandit Club</p>
         <a href={"/Dashboard"}>Home</a>
-        <a href={"/YourContracts"}>Your Contracts</a>
+        <a
+          href={
+            "https://eth-goerli.gateway.pokt.network/v1/lb/6d4de156cc643d8f15d5620b"
+          }
+          onClick={() => {
+            navigator.clipboard.writeText(
+              "https://eth-goerli.gateway.pokt.network/v1/lb/6d4de156cc643d8f15d5620b"
+            );
+          }}
+        >
+          Click here to get an RPC!
+        </a>
         <ConnectButton />
       </div>
     </StyledHeader>
