@@ -35,6 +35,15 @@ export default function Layout({ children }) {
           >
             Your Contracts
           </Navbar.Link>
+          <Navbar.Link
+            onClick={() => {
+              navigator.clipboard.writeText(
+                "https://eth-goerli.gateway.pokt.network/v1/lb/6d4de156cc643d8f15d5620b"
+              );
+            }}
+          >
+            Click here to get an RPC!
+          </Navbar.Link>
         </Navbar.Content>
         <Navbar.Content>
           <Navbar.Item>
